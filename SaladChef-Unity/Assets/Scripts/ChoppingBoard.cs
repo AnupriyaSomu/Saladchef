@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ChoppingBoard : MonoBehaviour, Interactable {
+public class  ChoppingBoard : MonoBehaviour, IInteractable {
 
 	private string vegetableName;
 	private TextMesh vegetableUI;
 
 	private bool beingUsed = false;
 	private float choppingFrameCounter = 0;
-	private PlayerSpawner player;
+	private  Player player;
 
 	private void Awake() {
 		vegetableUI = GetComponentInChildren<TextMesh>();
@@ -19,7 +19,7 @@ public class ChoppingBoard : MonoBehaviour, Interactable {
 		if(!beingUsed) return;
 
 		choppingFrameCounter += Time.deltaTime;
-		if(choppingFrameCounter >= Constants.CHOPPING_BOARD_TIME){
+		if(choppingFrameCounter >=  Constants.CHOPPING_BOARD_TIME){
 			player.AddChoppedVegetable(vegetableName);	
 			vegetableName = null;
 			vegetableUI.text = "-";
@@ -33,7 +33,7 @@ public class ChoppingBoard : MonoBehaviour, Interactable {
 		player.IsChopping = value;
 	}
 
-	public void OnInteract(PlayerSpawner player){
+	public void OnInteract( Player player){
 		if(beingUsed) return;
 
 		if(vegetableName == null){

@@ -4,14 +4,12 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Serving Counter
-  - Chopping board
-  - Player manager
-  - Plate
+  - ServingCounter
   - Wall
   - Vegetable
   - ChoppingBoard
   - PlayerManager
+  - Plate
   layers:
   - Default
   - TransparentFX
@@ -21,9 +19,9 @@ TagManager:
   - UI
   - 
   - 
-  - PostProcessing
-  - Interactable
   - Player
+  - Interactable
+  - 
   - 
   - 
   - 

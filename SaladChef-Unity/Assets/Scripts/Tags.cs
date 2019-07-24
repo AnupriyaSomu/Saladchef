@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Tags {
+public class  Tags {
 	public const string SERVING_COUNTER = "ServingCounter";
 	public const string PLAYER = "Player";
 	public const string WALL = "Wall";

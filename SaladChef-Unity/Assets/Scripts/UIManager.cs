@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UIManager : MonoBehaviour {
+public class  UIManager : MonoBehaviour {
 
 	public enum MenuState{
 		MAIN_PANEL = 0,

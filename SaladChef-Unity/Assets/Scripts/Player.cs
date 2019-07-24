@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerSpawner : MonoBehaviour {
+public class  Player : MonoBehaviour {
 
 	private const int MAX_HELD_VEGETABLES = 2;
 
@@ -13,7 +13,7 @@ public class PlayerSpawner : MonoBehaviour {
 
 	private Rigidbody2D body;
 
-	private PlayerManager playerManager;
+	private  PlayerManager playerManager;
 
 	private Queue<string> vegetables = new Queue<string>();
 	private List<string> choppedVegetables = new List<string>();
@@ -36,7 +36,7 @@ public class PlayerSpawner : MonoBehaviour {
 	private string tempVegetableUIText;
 
 	private int score = 0;
-	private int gameTime = Constants.PLAYER_START_TIME;
+	private int gameTime =  Constants.PLAYER_START_TIME;
 
 	private float gameTimeFrameCounter = 0;
 
@@ -94,7 +94,7 @@ public class PlayerSpawner : MonoBehaviour {
 	private void CheckForInteractions(){
 		if(this.canInteract && isTryingToInteract){
 			this.canInteract = false;
-			layerMask = LayerMask.GetMask(Layers.INTERACTABLE);
+			layerMask = LayerMask.GetMask( Layers.INTERACTABLE);
 			interactedColliders = Physics2D.OverlapCircleAll(transform.position, interactionDistance, layerMask);
 
 			if(interactedColliders.Length > 0) {
@@ -111,7 +111,7 @@ public class PlayerSpawner : MonoBehaviour {
 			}
 
 			if(closestCollider != null){
-				closestCollider.GetComponent<Interactable>().OnInteract(this);
+				closestCollider.GetComponent<IInteractable>().OnInteract(this);
 				closestCollider = null;
 			}
 		}
@@ -150,7 +150,7 @@ public class PlayerSpawner : MonoBehaviour {
 		if(tempVegetableUIText != "") choppedVegetablesUI.text = tempVegetableUIText;
 	}
 
-	public void Initialize(PlayerManager playerManager){
+	public void Initialize( PlayerManager playerManager){
 		this.playerManager = playerManager;
 	}
 
@@ -219,7 +219,7 @@ public class PlayerSpawner : MonoBehaviour {
 
 	public void Reset(){
 		score = 0;
-		gameTime = Constants.PLAYER_START_TIME;
+		gameTime =  Constants.PLAYER_START_TIME;
 		gameTimeFrameCounter = 0;
 		isChopping = false;
 		canMove = true;

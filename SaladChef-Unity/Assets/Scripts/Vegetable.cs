@@ -1,17 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
-public class VegetableHandler : MonoBehaviour, Interactable{
+public class  Vegetable : MonoBehaviour, IInteractable{
 
 	private string vegetableName;
 
 	private void Awake() {
-		vegetableName = GetComponentInChildren<Text>().text;
+		vegetableName = GetComponentInChildren<TextMesh>().text;
 	}
 
-	public void OnInteract(PlayerSpawner player){
+	public void OnInteract( Player player){
 		player.AddVegetable(vegetableName);
 	}
 }

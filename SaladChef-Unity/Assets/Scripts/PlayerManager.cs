@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerManager : MonoBehaviour {
+public class  PlayerManager : MonoBehaviour {
 
 	[SerializeField] private int maxPlayerSpeed;
 	[SerializeField] private GameObject playerOnePrefab, playerTwoPrefab;
 
-	private PlayerSpawner playerOne, playerTwo;
+	private  Player playerOne, playerTwo;
 	private Vector2 playerOneDirection, playerTwoDirection;
 	private bool playerOneTryingToInteract, playerTwoTryingToInteract;
 	[SerializeField] private Text playerOneScore, playerTwoScore;
@@ -46,10 +46,10 @@ public class PlayerManager : MonoBehaviour {
 
 	}
 
-	private PlayerSpawner InitializePlayer(GameObject playerPrefab, Vector2 position, string name){
+	private  Player InitializePlayer(GameObject playerPrefab, Vector2 position, string name){
 		tempCreatedObject = Instantiate(playerPrefab, position, Quaternion.identity);
 		tempCreatedObject.name = name;
-		return tempCreatedObject.GetComponent<PlayerSpawner>();
+		return tempCreatedObject.GetComponent< Player>();
 	}
 
 	public void UpdateScoreUI(){
@@ -82,8 +82,8 @@ public class PlayerManager : MonoBehaviour {
 	}
 
 	public void PenalizeAll(){
-		playerOne.IncrementScore(Constants.ANGRY_CUSTOMER_PENALTY);
-		playerTwo.IncrementScore(Constants.ANGRY_CUSTOMER_PENALTY);
+		playerOne.IncrementScore( Constants.ANGRY_CUSTOMER_PENALTY);
+		playerTwo.IncrementScore( Constants.ANGRY_CUSTOMER_PENALTY);
 	}
 
 	public void StopPlayers(bool value){

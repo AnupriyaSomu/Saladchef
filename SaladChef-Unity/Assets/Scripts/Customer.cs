@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CustomersSpawner : MonoBehaviour, Interactable, Spawnable {
+public class Customer : MonoBehaviour, IInteractable, ISpawnable {
 
 	public enum CustomerState{
 		ENTERING = 0,
@@ -39,7 +39,7 @@ public class CustomersSpawner : MonoBehaviour, Interactable, Spawnable {
 
 	private SpriteRenderer progressSprite;
 
-	private PlayerSpawner failedServer;
+	private Player failedServer;
 
 	private PlayerManager playerManager;
 
@@ -134,7 +134,7 @@ public class CustomersSpawner : MonoBehaviour, Interactable, Spawnable {
 	}
 
 
-	public void OnInteract(PlayerSpawner player){
+	public void OnInteract(Player player){
 		if(HasEaten) return;
 		if(player.ServeCustomer(ingredients)){
 			player.IncrementScore(ingredients.Count * Constants.SATISFIED_CUSTOMER_REWARD);
@@ -205,12 +205,7 @@ public class CustomersSpawner : MonoBehaviour, Interactable, Spawnable {
 		HasEaten = true;
 	}
 
-    void Interactable.OnInteract(PlayerSpawner player)
-    {
-        throw new System.NotImplementedException();
-    }
-
-    public bool HasEaten{
+	public bool HasEaten{
 		get{
 			return hasEaten;
 		}

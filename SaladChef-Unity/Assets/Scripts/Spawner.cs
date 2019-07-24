@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MainSpawner : MonoBehaviour {
+public class  Spawner : MonoBehaviour {
 	[SerializeField] protected Transform[] spawnPoints;
 	[SerializeField] protected GameObject spawnPrefab;
 	[SerializeField] protected int spawnDelay;
 	[SerializeField] protected int spawnStartDelay;
 	[SerializeField] protected bool toSpawn;
 
-	private Spawnable[] spawnObjects;
+	private ISpawnable[] spawnObjects;
 
 	private float frameCounter = 0;
 	private int spawnPointIndex = -1; 
@@ -44,16 +44,16 @@ public class MainSpawner : MonoBehaviour {
 	}
 
 	public void Initialize(){
-		spawnObjects = new Spawnable[spawnPoints.Length];
+		spawnObjects = new ISpawnable[spawnPoints.Length];
 		for(int i=0; i<spawnPoints.Length; i++){
-			spawnObjects[i] = Instantiate(spawnPrefab, spawnPoints[i].position, Quaternion.identity, transform).GetComponent<Spawnable>();
+			spawnObjects[i] = Instantiate(spawnPrefab, spawnPoints[i].position, Quaternion.identity, transform).GetComponent<ISpawnable>();
 		} 
 	}
 
 	public void Reset(){
 		hasStartedSpawning = false;
 		frameCounter = 0;
-		foreach(Spawnable spawnable in spawnObjects) spawnable.ResetSpawn();
+		foreach(ISpawnable spawnable in spawnObjects) spawnable.ResetSpawn();
 	}
 
 	public bool ToSpawn{

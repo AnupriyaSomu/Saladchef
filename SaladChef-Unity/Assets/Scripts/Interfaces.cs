@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface Interactable{
-	void OnInteract(PlayerSpawner player);
+public interface IInteractable{
+	void OnInteract(Player player);
 }
 
-public interface Spawnable{
+public interface ISpawnable{
 	bool IsAvailableToSpawn();
 	void OnSpawn(Vector2 position);
 	void ResetSpawn();
